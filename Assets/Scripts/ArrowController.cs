@@ -69,7 +69,6 @@ public class ArrowController : MonoBehaviour
                     if (compare(arr, i))
                     {
                         float prec = Mathf.Abs(border.transform.position.y - arr.transform.position.y);
-                        Debug.Log("Precyzja: " + prec);
                         if (prec < 1.0f)
                         {
                             PointCounter.Add((int)(20 * (1.0f - prec)));
@@ -81,16 +80,10 @@ public class ArrowController : MonoBehaviour
                     }
                     else
                     {
-                        //TODO: Stracenie życia
-                        Debug.Log("Zła strzałka.");
                         PointCounter.Add(-20);
                     }
                     GameObject.Destroy(arr);
                     GameObject.Destroy(arrows_left.Dequeue());
-                }
-                else
-                {
-                    Debug.Log("No arrow");
                 }
             }
         }

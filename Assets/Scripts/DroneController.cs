@@ -26,7 +26,6 @@ public class DroneController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("aaaaaaaaaaaaa");
         if (collision.gameObject.tag == "Drone")
         {
             return;
