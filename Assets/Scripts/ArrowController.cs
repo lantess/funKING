@@ -7,7 +7,6 @@ public class ArrowController : MonoBehaviour
     public GameObject border;
     public GameObject _prefab;
     public static float BPM = 125.0f;
-    public static float[] borders = { 0.1f, 0.4f, 0.9f, 1.0f };
     public float bitsPerArrow = 4.0f;
     public float Timing { get => BPM / 60.0f / bitsPerArrow; }
     private float deltaTime = 0.0f;
@@ -68,12 +67,18 @@ public class ArrowController : MonoBehaviour
                     GameObject arr = arrows_right.Dequeue();
                     if (compare(arr, i))
                     {
-                        float prec = border.transform.position.y - arr.transform.position.y;
+                        float prec = Mathf.Abs(border.transform.position.y - arr.transform.position.y);
                         Debug.Log("Precyzja: " + prec);
+                        if(prec<1.0f)
+                            PointCounter.Add((int)(20*(1.0f-prec)));
+                        else
+                            PointCounter.Add(-20);
                     }
                     else
                     {
+                        //TODO: Stracenie życia
                         Debug.Log("Zła strzałka.");
+                        PointCounter.Add(-20);
                     }
                     GameObject.Destroy(arr);
                     GameObject.Destroy(arrows_left.Dequeue());
