@@ -43,3 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f5fe87cf5ad74746bce35f22cc6f3ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  border: {fileID: 2285021244801435387, guid: a658e49e01f2a7542b4aec7bea42e249, type: 3}
+  _prefab: {fileID: 4145670412330206417}
+  bitsPerArrow: 4
