@@ -42,8 +42,8 @@ public class ArrowController : MonoBehaviour
             deltaTime = 0.0f;
             int r = Random.Range(0, 4);
             _prefab.GetComponent<SpriteRenderer>().sprite = arrowSprites[r];
-            arrows_right.Enqueue(Instantiate(_prefab, new Vector3(8.0f, 6.0f, 0.0f), Quaternion.Euler(0.0f, 0.0f, 90.0f * r)));
-            arrows_left.Enqueue(Instantiate(_prefab, new Vector3(-8.0f, 6.0f, 0.0f), Quaternion.Euler(0.0f, 0.0f, 90.0f * r)));
+            arrows_right.Enqueue(Instantiate(_prefab, new Vector3(8.0f, 6.0f, 0.0f), Quaternion.identity));
+            arrows_left.Enqueue(Instantiate(_prefab, new Vector3(-8.0f, 6.0f, 0.0f), Quaternion.identity));
         }
     }
 
@@ -78,7 +78,9 @@ public class ArrowController : MonoBehaviour
                                 ammoBar.GetComponent<AmmoBarController>().Add();
                         }
                         else
+                        {
                             PointCounter.Add(-20);
+                        }
                     }
                     else
                     {
@@ -93,6 +95,6 @@ public class ArrowController : MonoBehaviour
 
     private bool compare(GameObject arr, int key)
     {
-        return arr.transform.rotation.eulerAngles.z == 90.0f * key;
+        return arr.GetComponent<SpriteRenderer>().sprite == arrowSprites[key];
     }
 }

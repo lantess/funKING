@@ -5,7 +5,7 @@ using UnityEngine;
 public class Gun : MonoBehaviour
 {
     [SerializeField] GameObject bullet;
-    [SerializeField] float bulletSpeed = 10f;
+    [SerializeField] float bulletSpeed = 15f;
 
     private Vector3 target;
     public GameObject crosshair;
