@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 81b21650fd3b8aa41a3dc6b0c2988acb
+=======
+guid: 73d768aaa6bf2204388bbe202de7b5f5
+>>>>>>> 67ee8782f4deb238c36c5d792827384db0345914
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -45,7 +49,11 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
+<<<<<<< HEAD
   spritePixelsToUnits: 1000
+=======
+  spritePixelsToUnits: 100
+>>>>>>> 67ee8782f4deb238c36c5d792827384db0345914
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -71,6 +79,7 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+<<<<<<< HEAD
   - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
@@ -95,6 +104,8 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+=======
+>>>>>>> 67ee8782f4deb238c36c5d792827384db0345914
   spriteSheet:
     serializedVersion: 2
     sprites: []
@@ -110,7 +121,11 @@ TextureImporter:
     secondaryTextures: []
   spritePackingTag: 
   pSDRemoveMatte: 0
+<<<<<<< HEAD
   pSDShowRemoveMatteOption: 1
+=======
+  pSDShowRemoveMatteOption: 0
+>>>>>>> 67ee8782f4deb238c36c5d792827384db0345914
   userData: 
   assetBundleName: 
   assetBundleVariant: 
