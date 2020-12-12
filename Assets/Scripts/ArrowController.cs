@@ -71,6 +71,7 @@ public class ArrowController : MonoBehaviour
                         Debug.Log("Precyzja: " + prec);
                         if(prec<1.0f)
                             PointCounter.Add((int)(20*(1.0f-prec)));
+                        //TODO: amunicja
                         else
                             PointCounter.Add(-20);
                     }
