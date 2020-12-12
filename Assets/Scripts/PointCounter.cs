@@ -14,7 +14,8 @@ public class PointCounter
     public static void Add(int x)
     {
         points += x;
-        deltaPoints += x;
+        deltaPoints = deltaPoints + x > 0 ?
+                        deltaPoints + x : 0;
         try
         {
             if (pointText == null)
