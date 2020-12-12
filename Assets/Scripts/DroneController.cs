@@ -23,4 +23,12 @@ public class DroneController : MonoBehaviour
         pos.y += Time.deltaTime * speed * Mathf.Cos(angle);
         transform.position = pos;
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Drone")
+            return;
+        //TODO: Glitch na zniszczenie
+        GameObject.Destroy(this.gameObject);
+    }
 }
