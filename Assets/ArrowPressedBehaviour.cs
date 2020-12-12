@@ -6,12 +6,15 @@ public class ArrowPressedBehaviour : StateMachineBehaviour
 {
     public GameObject hero;
     public Sprite[] sprites;
+    
 
-    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        //int a = PlayerPrefs.GetInt("selectedCharacter");
+        hero = GameObject.Find("Hero");
+        int r = Random.Range(0, sprites.Length);
+        hero.GetComponent<SpriteRenderer>().sprite = sprites[r];
+    }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
