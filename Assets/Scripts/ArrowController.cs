@@ -6,6 +6,7 @@ public class ArrowController : MonoBehaviour
 {
     public GameObject border;
     public GameObject _prefab;
+    public GameObject ammoBar;
     public static float BPM = 125.0f;
     public float bitsPerArrow = 4.0f;
     public float Timing { get => BPM / 60.0f / bitsPerArrow; }
@@ -69,9 +70,12 @@ public class ArrowController : MonoBehaviour
                     {
                         float prec = Mathf.Abs(border.transform.position.y - arr.transform.position.y);
                         Debug.Log("Precyzja: " + prec);
-                        if(prec<1.0f)
-                            PointCounter.Add((int)(20*(1.0f-prec)));
-                        //TODO: amunicja
+                        if (prec < 1.0f)
+                        {
+                            PointCounter.Add((int)(20 * (1.0f - prec)));
+                            while (PointCounter.HasAmmoToAdd())
+                                ammoBar.GetComponent<AmmoBarController>().Add();
+                        }
                         else
                             PointCounter.Add(-20);
                     }

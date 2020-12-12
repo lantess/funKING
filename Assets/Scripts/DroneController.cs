@@ -30,6 +30,5 @@ public class DroneController : MonoBehaviour
             return;
         //TODO: Glitch na zniszczenie
         GameObject.Destroy(this.gameObject);
-        PointCounter.Add(50);
     }
 }

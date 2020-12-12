@@ -8,10 +8,13 @@ public class PointCounter
 {
     public static Text pointText;
     private static int points = 0;
+    private static int deltaPoints = 0;
+    private static int pointsPerBullet = 20;
 
     public static void Add(int x)
     {
         points += x;
+        deltaPoints += x;
         try
         {
             if (pointText == null)
@@ -26,6 +29,16 @@ public class PointCounter
     public static int Get()
     {
         return points;
+    }
+
+    public static bool HasAmmoToAdd()
+    {
+        if (deltaPoints > pointsPerBullet)
+        {
+            deltaPoints -= pointsPerBullet;
+            return true;
+        }
+        return false;
     }
 
     public static void Reset()

@@ -6,12 +6,11 @@ public class Gun : MonoBehaviour
 {
     [SerializeField] GameObject bullet;
     [SerializeField] float bulletSpeed = 10f;
-    [SerializeField] int bulletShotLimit = 25;
-    [SerializeField] int bulletShotEquippedAmount = 15;
 
     private Vector3 target;
     public GameObject crosshair;
     public GameObject bulletStart;
+    public GameObject ammoBar;
 
     // Start is called before the first frame update
     void Start()
@@ -39,13 +38,14 @@ public class Gun : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            GameObject b = Instantiate(bullet) as GameObject;
-            b.transform.position = bulletStart.transform.position;
-            b.transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotationZ);
-            b.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
-
-            
-            bulletShotEquippedAmount--;
+            if (ammoBar.GetComponent<AmmoBarController>().Has())
+            {
+                GameObject b = Instantiate(bullet) as GameObject;
+                b.transform.position = bulletStart.transform.position;
+                b.transform.rotation = Quaternion.Euler(0.0f, 0.0f, rotationZ);
+                b.GetComponent<Rigidbody2D>().velocity = direction * bulletSpeed;
+                ammoBar.GetComponent<AmmoBarController>().Remove();
+            }
         }
 
     }

@@ -23,11 +23,15 @@ public class DroneGenerator : MonoBehaviour
         else
         {
             delta = 0.0f;
-            float x = Random.Range(-Xborder - 2, Xborder + 3);
+            float x = Random.Range(0, 2) == 0 ? 
+                Random.Range(-Xborder - 2, -2) : 
+                Random.Range(3, Xborder + 3);
             float y = x < -9 || x > 9 ?
-                        Random.Range(-Yborder - 2, Yborder + 2) :
+                        Random.Range(-Yborder + 3, Yborder + 2) :
                         Yborder + 2;
             Instantiate(prefab, new Vector3(x, y, 0.0f), Quaternion.identity);
         }
     }
+
+
 }
