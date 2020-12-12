@@ -18,6 +18,8 @@ public class ChooseCharacterScript : MonoBehaviour
     public void setFemaleChar()
     {
         PlayerPrefs.SetInt(selectedCharacter, 1);
+        Debug.Log("MARCIN JEST GENIALNY" + PlayerPrefs.GetInt(selectedCharacter));
+        SceneManager.LoadScene(2);
     }
 
 
