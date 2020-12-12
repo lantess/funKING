@@ -95,3 +95,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 3899007974248316003, guid: 2f346e6c8f8cf784d896e5c4fe574ad0, type: 3}
+  speed: 2
+  angle: 0
