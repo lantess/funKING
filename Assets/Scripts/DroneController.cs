@@ -24,10 +24,13 @@ public class DroneController : MonoBehaviour
         transform.position = pos;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("aaaaaaaaaaaaa");
         if (collision.gameObject.tag == "Drone")
+        {
             return;
+        }
         //TODO: Glitch na zniszczenie
         GameObject.Destroy(this.gameObject);
     }
