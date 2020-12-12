@@ -9,6 +9,7 @@ public class ArrowController : MonoBehaviour
     public GameObject ammoBar;
     public static float BPM = 125.0f;
     public float bitsPerArrow = 4.0f;
+    public Sprite[] arrowSprites;
     public float Timing { get => BPM / 60.0f / bitsPerArrow; }
     private float deltaTime = 0.0f;
     private Queue<GameObject> arrows_right,
@@ -39,7 +40,8 @@ public class ArrowController : MonoBehaviour
         else
         {
             deltaTime = 0.0f;
-            float r = Random.Range(0, 4);
+            int r = Random.Range(0, 4);
+            _prefab.GetComponent<SpriteRenderer>().sprite = arrowSprites[r];
             arrows_right.Enqueue(Instantiate(_prefab, new Vector3(8.0f, 6.0f, 0.0f), Quaternion.Euler(0.0f, 0.0f, 90.0f * r)));
             arrows_left.Enqueue(Instantiate(_prefab, new Vector3(-8.0f, 6.0f, 0.0f), Quaternion.Euler(0.0f, 0.0f, 90.0f * r)));
         }

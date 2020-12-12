@@ -14,9 +14,10 @@ public class HeroController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(PlayerPrefs.GetInt("SelectedCharacter"));
         animator = GetComponent<Animator>();
         hitPoints = MaxHitPoints;
+        //animator.SetInteger("Character", PlayerPrefs.GetInt("SelectedCharacter"));
+        animator.SetInteger("Character", 0);
     }
 
     // Update is called once per frame
