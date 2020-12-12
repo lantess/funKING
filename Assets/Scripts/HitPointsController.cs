@@ -19,9 +19,10 @@ public class HitPointsController : MonoBehaviour
     void Start()
     {
         Vector2 pvSize = gameObject.GetComponent<RectTransform>().sizeDelta;
-        size = (int)(pvSize.x * 0.075f);
+        size = (int)(pvSize.x * 0.025f);
         xOffset = (int)(size * 1.2f);
-
+        X = (int)(pvSize.x / 2 - xOffset);
+        Y = (int)(pvSize.y / 2 - xOffset + size);
         hitpoints = new Stack<GameObject>();
         for(int i = 0; i <  hero.GetComponent<HeroController>().MaxHitPoints; i++)
         {
@@ -55,7 +56,8 @@ public class HitPointsController : MonoBehaviour
         img.color = new Color(255, 0, 0);
         RectTransform rt = hp.GetComponent<RectTransform>();
         rt.SetParent(transform);
-        rt.sizeDelta = new Vector2(20.0f, 20.0f);
+        rt.pivot = new Vector2(0, 1);
+        rt.sizeDelta = new Vector2(size, size);
         rt.localPosition = new Vector3(X, Y, 0);
         X -= xOffset;
         return hp;
