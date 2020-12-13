@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Drone
   - GarbageCollector
+  - ScreenShake
   layers:
   - Default
   - TransparentFX

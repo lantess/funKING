@@ -21,9 +21,12 @@ public class ArrowController : MonoBehaviour
     private float[] bpa = { 2.0f, 4.0f, 2.0f, 4.0f, 2.0f, 4.0f , 2.0f, 4.0f , 2.0f, 4.0f , 6.0f};
     private float bpaDelta = 0.0f;
 
+    private Shake shake;
+
     // Start is called before the first frame update
     void Start()
     {
+        shake = GameObject.FindGameObjectWithTag("ScreenShake").GetComponent<Shake>();
         arrows_right = new Queue<GameObject>();
         arrows_left = new Queue<GameObject>();
         keys = new KeyCode[] { KeyCode.UpArrow, KeyCode.LeftArrow, KeyCode.DownArrow, KeyCode.RightArrow };
@@ -91,11 +94,13 @@ public class ArrowController : MonoBehaviour
                             else
                             {
                                 PointCounter.isCorrect = false;
+                                shake.CamShake();
                             }
                         }
                         else
                         {
                             PointCounter.isCorrect = false;
+                            shake.CamShake();
                         }
                         GameObject.Destroy(arr);
                         GameObject.Destroy(arrows_left.Dequeue());

@@ -9,11 +9,13 @@ public class HeroController : MonoBehaviour
     private int hitPoints;
 
     private Animator animator;
-    
+    private Shake shake;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        shake = GameObject.FindGameObjectWithTag("ScreenShake").GetComponent<Shake>();
         animator = GetComponent<Animator>();
         hitPoints = MaxHitPoints;
         animator.SetInteger("Character", PlayerPrefs.GetInt("SelectedCharacter"));
@@ -33,6 +35,7 @@ public class HeroController : MonoBehaviour
     {
         if(collision.gameObject.tag == "Drone")
         {
+            shake.CamShake();
             hitPoints--;
             canvas.GetComponent<HitPointsController>().Remove();
         }
