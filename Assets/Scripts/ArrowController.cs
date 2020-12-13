@@ -14,7 +14,12 @@ public class ArrowController : MonoBehaviour
     private float deltaTime = 0.0f;
     private Queue<GameObject> arrows_right,
                                 arrows_left;
-    private KeyCode[] keys; 
+    private KeyCode[] keys;
+
+    private int minS = 10,
+                maxS = 20;
+    private float[] bpa = { 2.0f, 4.0f, 2.0f, 4.0f, 2.0f, 4.0f , 2.0f, 4.0f , 2.0f, 4.0f , 6.0f};
+    private float bpaDelta = 0.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +27,9 @@ public class ArrowController : MonoBehaviour
         arrows_right = new Queue<GameObject>();
         arrows_left = new Queue<GameObject>();
         keys = new KeyCode[] { KeyCode.UpArrow, KeyCode.LeftArrow, KeyCode.DownArrow, KeyCode.RightArrow };
+
+        bitsPerArrow = bpa[Random.Range(0, bpa.Length)];
+        bpaDelta += Random.Range(minS, maxS);
     }
 
     // Update is called once per frame
@@ -30,7 +38,7 @@ public class ArrowController : MonoBehaviour
         createNewArrow();
         removeMissed();
         listenKeys();
-        
+        updateBPA();
     }
 
     private void createNewArrow()
@@ -67,27 +75,36 @@ public class ArrowController : MonoBehaviour
             {
                 if(arrows_right.Count > 0)
                 {
-                    GameObject arr = arrows_right.Dequeue();
-                    if (compare(arr, i))
+                    if (arrows_right.Peek().transform.position.y < arrows_right.Peek().transform.localScale.y) //pls work
                     {
-                        float prec = Mathf.Abs(border.transform.position.y - arr.transform.position.y);
-                        if (prec < 1.0f)
+                        GameObject arr = arrows_right.Dequeue();
+                        if (compare(arr, i))
                         {
-                            PointCounter.Add((int)(20 * (1.0f - prec)));
-                            while (PointCounter.HasAmmoToAdd())
-                                ammoBar.GetComponent<AmmoBarController>().Add();
+                            float prec = Mathf.Abs(border.transform.position.y - arr.transform.position.y);
+                            if (prec < 1.0f)
+                            {
+                                PointCounter.Add((int)(20 * (1.0f - prec)));
+                                while (PointCounter.HasAmmoToAdd())
+                                    ammoBar.GetComponent<AmmoBarController>().Add();
+                                PointCounter.isCorrect = true;
+                            }
+                            else
+                            {
+                                PointCounter.isCorrect = false;
+                            }
                         }
                         else
                         {
-                            PointCounter.Add(-20);
+                            PointCounter.isCorrect = false;
                         }
+                        GameObject.Destroy(arr);
+                        GameObject.Destroy(arrows_left.Dequeue());
+                        PointCounter.isHit = true;
                     }
                     else
                     {
-                        PointCounter.Add(-20);
+                        PointCounter.isHit = false;
                     }
-                    GameObject.Destroy(arr);
-                    GameObject.Destroy(arrows_left.Dequeue());
                 }
             }
         }
@@ -96,5 +113,16 @@ public class ArrowController : MonoBehaviour
     private bool compare(GameObject arr, int key)
     {
         return arr.GetComponent<SpriteRenderer>().sprite == arrowSprites[key];
+    }
+
+    private void updateBPA()
+    {
+        if (bpaDelta > 0.0)
+            bpaDelta -= Time.deltaTime;
+        else
+        {
+            bitsPerArrow = bpa[Random.Range(0, bpa.Length)];
+            bpaDelta += Random.Range(minS, maxS);
+        }
     }
 }

@@ -11,6 +11,9 @@ public class PointCounter
     private static int deltaPoints = 0;
     private static int pointsPerBullet = 20;
 
+    public static bool isHit = false;
+    public static bool isCorrect = false;
+
     public static void Add(int x)
     {
         points += x;

@@ -99,6 +99,7 @@ MonoBehaviour:
   target: {fileID: 3899007974248316003, guid: 2f346e6c8f8cf784d896e5c4fe574ad0, type: 3}
   speed: 1
   angle: 0
+  rotSpeed: 0
 --- !u!61 &4372868180156887366
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -123,7 +124,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.25, y: 1.25}
+  m_Size: {x: 1.75, y: 2.75}
   m_EdgeRadius: 0
 --- !u!50 &5601997939174867631
 Rigidbody2D:

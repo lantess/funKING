@@ -21,12 +21,12 @@ public class HeroController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        animator.SetBool("Up", Input.GetKeyDown(KeyCode.UpArrow));
-        animator.SetBool("Down", Input.GetKeyDown(KeyCode.DownArrow));
-        animator.SetBool("Left", Input.GetKeyDown(KeyCode.LeftArrow));
-        animator.SetBool("Right", Input.GetKeyDown(KeyCode.RightArrow));
+        animator.SetBool("Up", Input.GetKeyDown(KeyCode.UpArrow) && PointCounter.isHit && PointCounter.isCorrect);
+        animator.SetBool("Down", Input.GetKeyDown(KeyCode.DownArrow) && PointCounter.isHit && PointCounter.isCorrect);
+        animator.SetBool("Left", Input.GetKeyDown(KeyCode.LeftArrow) && PointCounter.isHit && PointCounter.isCorrect);
+        animator.SetBool("Right", Input.GetKeyDown(KeyCode.RightArrow) && PointCounter.isHit && PointCounter.isCorrect);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
