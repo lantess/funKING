@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HeroController : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class HeroController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PointCounter.Reset();
         shake = GameObject.FindGameObjectWithTag("ScreenShake").GetComponent<Shake>();
         animator = GetComponent<Animator>();
         hitPoints = MaxHitPoints;
@@ -42,8 +44,11 @@ public class HeroController : MonoBehaviour
         if (hitPoints == 0)
         {
             //TODO: end game
-            Time.timeScale = 0.0f;
-            Debug.Log("Przegrałeś!");
+            PlayerPrefs.SetInt("Points", PointCounter.Get());
+            SceneManager.LoadScene(
+                PlayerPrefs.GetInt("SelectedCharacter") == 0 ?
+                "MainMenu" : "GameOver"
+                );
         }
     }
 
