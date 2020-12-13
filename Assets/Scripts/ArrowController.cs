@@ -51,7 +51,7 @@ public class ArrowController : MonoBehaviour
     {
         if (arrows_right.Count > 0)
         {
-            if (arrows_right.Peek().transform.position.y < border.transform.position.y - border.transform.localScale.y)
+            if (arrows_right.Peek().transform.position.y < border.transform.position.y - border.transform.localScale.y/4)
             {
                 GameObject.Destroy(arrows_right.Dequeue());
                 GameObject.Destroy(arrows_left.Dequeue());
