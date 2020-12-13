@@ -21,7 +21,7 @@ public class HitPointsController : MonoBehaviour
         Vector2 pvSize = gameObject.GetComponent<RectTransform>().sizeDelta;
         size = (int)(pvSize.x * 0.025f);
         xOffset = (int)(size * 1.2f);
-        X = (int)(pvSize.x / 2 - xOffset - size);
+        X = (int)(pvSize.x / 2 - xOffset - size*3.4);
         Y = (int)(pvSize.y / 2 - xOffset);
         hitpoints = new Stack<GameObject>();
         for(int i = 0; i <  hero.GetComponent<HeroController>().MaxHitPoints; i++)

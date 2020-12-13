@@ -78,7 +78,7 @@ public class ArrowController : MonoBehaviour
             {
                 if(arrows_right.Count > 0)
                 {
-                    if (arrows_right.Peek().transform.position.y < arrows_right.Peek().transform.localScale.y) //pls work
+                    if (arrows_right.Peek().transform.position.y < 3.0f) //pls work
                     {
                         GameObject arr = arrows_right.Dequeue();
                         if (compare(arr, i))

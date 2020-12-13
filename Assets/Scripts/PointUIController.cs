@@ -12,7 +12,7 @@ public class PointUIController : MonoBehaviour
         Vector2 pvSize = gameObject.GetComponent<RectTransform>().sizeDelta;
         float xsize = pvSize.x / 4,
                 ysize = pvSize.y / 8;
-        float X = -(pvSize.x - xsize) / 2 + xsize/4,
+        float X = -(pvSize.x - xsize) / 2 + xsize/3,
             Y = (pvSize.y - ysize) / 2 - ysize/4;
         RectTransform rt = text.GetComponent<RectTransform>();
         rt.sizeDelta = new Vector2(xsize, ysize);
