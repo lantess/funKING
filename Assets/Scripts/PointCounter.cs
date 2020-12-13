@@ -23,7 +23,7 @@ public class PointCounter
         {
             if (pointText == null)
                 pointText = GameObject.Find("Points").GetComponent<Text>();
-            pointText.text = "Punkty: " + points;
+            pointText.text = ""+points;
         } catch (Exception e)
         {
 
