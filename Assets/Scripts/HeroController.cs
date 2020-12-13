@@ -9,11 +9,13 @@ public class HeroController : MonoBehaviour
     private int hitPoints;
 
     private Animator animator;
-    
+    private Shake shake;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        shake = GameObject.FindGameObjectWithTag("ScreenShake").GetComponent<Shake>();
         animator = GetComponent<Animator>();
         hitPoints = MaxHitPoints;
         animator.SetInteger("Character", PlayerPrefs.GetInt("SelectedCharacter"));
@@ -21,18 +23,19 @@ public class HeroController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        animator.SetBool("Up", Input.GetKeyDown(KeyCode.UpArrow));
-        animator.SetBool("Down", Input.GetKeyDown(KeyCode.DownArrow));
-        animator.SetBool("Left", Input.GetKeyDown(KeyCode.LeftArrow));
-        animator.SetBool("Right", Input.GetKeyDown(KeyCode.RightArrow));
+        animator.SetBool("Up", Input.GetKeyDown(KeyCode.UpArrow) && PointCounter.isHit && PointCounter.isCorrect);
+        animator.SetBool("Down", Input.GetKeyDown(KeyCode.DownArrow) && PointCounter.isHit && PointCounter.isCorrect);
+        animator.SetBool("Left", Input.GetKeyDown(KeyCode.LeftArrow) && PointCounter.isHit && PointCounter.isCorrect);
+        animator.SetBool("Right", Input.GetKeyDown(KeyCode.RightArrow) && PointCounter.isHit && PointCounter.isCorrect);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Drone")
         {
+            shake.CamShake();
             hitPoints--;
             canvas.GetComponent<HitPointsController>().Remove();
         }
