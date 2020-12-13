@@ -22,6 +22,12 @@ public class ChooseCharacterScript : MonoBehaviour
         SceneManager.LoadScene(2);
     }
 
+    public void showCredits()
+    {
+        Debug.Log("CREDIT SCORE PAGE!");
+        SceneManager.LoadScene(4);
+    }
+
 
 
 }
