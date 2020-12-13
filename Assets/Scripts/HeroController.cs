@@ -47,7 +47,7 @@ public class HeroController : MonoBehaviour
             PlayerPrefs.SetInt("Points", PointCounter.Get());
             SceneManager.LoadScene(
                 PlayerPrefs.GetInt("SelectedCharacter") == 0 ?
-                "MainMenu" : "GameOver"
+                "GameOver40000" : "GameOver"
                 );
         }
     }
