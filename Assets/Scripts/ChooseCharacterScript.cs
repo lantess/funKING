@@ -13,19 +13,19 @@ public class ChooseCharacterScript : MonoBehaviour
     {
         PlayerPrefs.SetInt(selectedCharacter, 0);
         Debug.Log("ADAM JEST GENIALNY" + PlayerPrefs.GetInt(selectedCharacter));
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene("GameScene");
     }
     public void setFemaleChar()
     {
         PlayerPrefs.SetInt(selectedCharacter, 1);
         Debug.Log("MARCIN JEST GENIALNY" + PlayerPrefs.GetInt(selectedCharacter));
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene("GameScene");
     }
 
     public void showCredits()
     {
         Debug.Log("CREDIT SCORE PAGE!");
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene("Credits");
     }
 
 
