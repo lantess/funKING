@@ -19,7 +19,7 @@ public class HeroController : MonoBehaviour
         animator = GetComponent<Animator>();
         hitPoints = MaxHitPoints;
         animator.SetInteger("Character", PlayerPrefs.GetInt("SelectedCharacter"));
-        //animator.SetInteger("Character", 0);
+        // animator.SetInteger("Character", 0);
     }
 
     // Update is called once per frame
